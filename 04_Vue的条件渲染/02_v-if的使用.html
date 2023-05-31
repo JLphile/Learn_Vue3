@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="Object.keys(info).length">
+        <h2>{{message}}</h2>
+        <ul>
+          <li>姓名:{{info.name}}</li>
+          <li>年龄:{{info.age}}</li>
+        </ul>
+      </div>
+      <div v-else>请输入个人信息后才显示</div>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            message: 'Information',
+            info: {
+              name: 'Rose',
+              age: 18,
+            },
+          }
+        },
+        methods: {},
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

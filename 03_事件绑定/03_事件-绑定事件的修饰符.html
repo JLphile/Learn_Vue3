@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .box{
+        width: 100px;
+        height: 100px;
+        background-color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{message}}</h2>
+      <div class="box" @click="divClick">
+        <!-- 修饰符stop 相当于 下面的方法中调用了 event.stopPropagation() -->
+        <button @click.stop="btnClick">click me!</button>
+      </div>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            message: 'Hello World',
+          }
+        },
+        methods: {
+          btnClick(){
+            // event.stopPropagation()
+            console.log('btn click:',event)
+          },
+          divClick(){
+            console.log('div click:',event)
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>
