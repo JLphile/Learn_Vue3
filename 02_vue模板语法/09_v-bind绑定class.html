@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .active {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h2 :class="classes">{{message}}</h2>
+
+      <!-- <button @click="btnClick" :class="isActive? 'active' : ''">点击变色</button> -->
+      <button @click="btnClick" :class="{active:isActive}">点击变色</button>
+      <button @click="btnClick" :class="{active:isActive,aaa:true,bbb:false}">点击变色</button>
+      <button @click="btnClick" :class="getDynamicClasses()">点击变色</button>
+
+      <h2 :class="['aaa',className]">{{message}}</h2>
+      <h2 :class="['aaa',className,isActive? 'active':'']">{{message}}</h2>
+      <h2 :class="['aaa',className,{active:isActive}]">{{message}}</h2>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            message: 'Hello World',
+            classes: 'aaa bbb ccc',
+            isActive: false,
+            className: 'bbb',
+          }
+        },
+        methods: {
+          btnClick() {
+            this.isActive = !this.isActive
+          },
+          getDynamicClasses() {
+            return { active: this.isActive, aaa: true, bbb: false }
+          },
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

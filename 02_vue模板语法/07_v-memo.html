@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 只有name属性发生改变时才会渲染div内的信息 -->
+      <div v-memo="[name]">
+        <h2>姓名：{{name}}</h2>
+        <h2>年龄：{{age}}</h2>
+        <h2>身高：{{height}}</h2>
+      </div>
+      <button @click="updateInfo">改变信息</button>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            name: 'Rose',
+            age: 18,
+            height: 1.88,
+          }
+        },
+        methods:{
+          updateInfo:function(){
+            // this.name='Jack'
+            this.age=20
+          }
+        }
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- <img v-bind:src="imgUrl" alt=""> -->
+      <img :src="switchUrl" alt="" />
+      <a :href="href">百度一下</a>
+      <button @click="switchImage">切换图片</button>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            imgUrl1:'http://p1.music.126.net/HFqJoN1oP7ORbpFU5AhDKw==/109951168647880228.jpg',
+            imgUrl2:'http://p1.music.126.net/M3ZhNEUL72EhY-bK_WpKTg==/109951168647900859.jpg',
+            switchUrl:'http://p1.music.126.net/HFqJoN1oP7ORbpFU5AhDKw==/109951168647880228.jpg',
+            href:'http://www.baidu.com'
+          }
+        },
+        methods:{
+          switchImage(){
+            this.switchUrl= this.switchUrl===this.imgUrl1?this.imgUrl2:this.imgUrl1
+          }
+        }
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

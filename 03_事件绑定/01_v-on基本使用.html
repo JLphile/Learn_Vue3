@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        /* background-color: orange; */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="box" @click="divClick" :style="{backgroundColor}"></div>
+      <h2 @click="increment">点我:{{counter}}</h2>
+
+      <!-- 不推荐 -->
+      <h2 @click="counter++">点我:{{counter}}</h2>
+
+      <div class="box" @mousemove="divMove" :style="{backgroundColor}"></div>
+
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            counter: 100,
+            backgroundColor: 'green',
+          }
+        },
+        methods: {
+          divClick() {
+            console.log('div被点击了')
+            this.backgroundColor='red'
+          },
+          increment() {
+            this.counter++
+          },
+          divMove(){
+            console.log('mouse move')
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

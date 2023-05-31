@@ -9,11 +9,19 @@
     <style></style>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="app">
+      <h2>{{content}}</h2>
+      <h2 v-html="content"></h2>
+    </div>
+
     <script src="../lib/vue.js"></script>
     <script>
-      const app=Vue.createApp({
-        template:`<h2> Hello World </h2><span>呵呵呵</span>`
+      const app = Vue.createApp({
+        data() {
+          return {
+            content: `<span style="color: red;">v-html演示</span>`,
+          }
+        },
       })
       app.mount('#app')
     </script>
