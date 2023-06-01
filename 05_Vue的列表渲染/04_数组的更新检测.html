@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <h2>Fruit list</h2>
+      <ul>
+        <li v-for="item in fruits">{{item}}</li>
+      </ul>
+      <button @click="changeArray">update</button>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            fruits: ['banana', 'apple', 'peach', 'orange'],
+            infos: { ID: 103, name: 'Rose', age: 19 },
+          }
+        },
+        methods: {
+          changeArray() {
+            // this.fruits=['durian', 'Kiwifruit', 'Lychee', 'Apricot']
+            // this.fruits.push(...['durian', 'Kiwifruit', 'Lychee', 'Apricot'])
+            // this.fruits.pop()
+            // this.fruits.splice(2,0,'durian', 'Kiwifruit', 'Lychee', 'Apricot')
+            // this.fruits.sort()
+            // this.fruits.reverse()
+
+            // 不修改原数组的方法不会自动更新,需要将新生成的数组重新赋值给原数组
+            this.fruits = this.fruits.filter(fruit => {
+              return fruit.includes('p')
+            })
+          },
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <h2>Fruit List</h2>
+      <ul>
+        <li v-for="(item,index) in fruits">{{index+1}}-{{item}}</li>
+      </ul>
+
+      <h2>Students Info</h2>
+      <ul v-for="item in students">
+        <li>ID: {{item.id}}</li>
+        <li>name: {{item.name}}</li>
+        <li>age: {{item.age}}</li>
+      </ul>
+      <h2>Students Info</h2>
+      <ul v-for="student of students">
+        <li v-for="(item,key) in student">{{key}}: {{item}}</li>
+      </ul>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            fruits: ['banana', 'apple', 'peach', 'orange'],
+            students: [
+              { ID: 100, name: 'Tom', age: 18 },
+              { ID: 101, name: 'Lily', age: 28 },
+              { ID: 102, name: 'Jack', age: 22 },
+              { ID: 103, name: 'Rose', age: 19 },
+            ],
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <h2>Students Info</h2>
+      <ul>
+        <li v-for="(item,key,index) in infos">{{key}}: {{item}} index:{{index}}</li>
+      </ul>
+
+      <h2>Number</h2>
+      <ul>
+        <li v-for="item in 10">{{item}}</li>
+      </ul>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            fruits: ['banana', 'apple', 'peach', 'orange'],
+            infos: { ID: 103, name: 'Rose', age: 19 },
+          }
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>
