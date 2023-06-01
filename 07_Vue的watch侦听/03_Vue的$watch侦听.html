@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{message}}</h2>
+      <button @click="changeMessage">click to change message</button>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            message: 'Hello World',
+          }
+        },
+
+        methods: {
+          changeMessage() {
+            this.message = 'Hello Vue3'
+          },
+        },
+        created() {
+          console.log('created')
+          this.$watch('message',(newValue, oldValue) => {console.log('watch message:', newValue, oldValue)},{ deep: true })
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>
