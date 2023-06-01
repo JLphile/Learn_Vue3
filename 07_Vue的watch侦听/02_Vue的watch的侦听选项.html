@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <h2>{{infos.name}}</h2>
+      <button @click="changeMessage">click to change message</button>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            message: 'Hello World',
+            infos: {
+              name: 'Rose',
+              age: 19,
+            },
+          }
+        },
+
+        methods: {
+          changeMessage() {
+            this.infos.name = 'Jack'
+          },
+        },
+
+        watch: {
+          // 函数名 就是 data 中对象的key
+          // 默认不是深度侦听
+
+          // infos(newValue, oldValue) {
+          //   console.log('infos is changed', newValue, oldValue)
+          // },
+
+          infos: {
+            handler(newValue, oldValue) {
+              console.log('infos is changed', newValue, oldValue)
+              console.log(newValue === oldValue) // 更改同一对象属性值,返回 true
+            },
+            deep: true,
+            immediate: true,
+          },
+          'infos.name': function (newValue, oldValue) {
+            console.log(newValue, oldValue)
+          },
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>
