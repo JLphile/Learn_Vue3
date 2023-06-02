@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style></style>
+  </head>
+  <body>
+    <div id="app">
+      <product-item></product-item>
+      <nav-bar></nav-bar>
+    </div>
+
+    <template id="product">
+      <div class="product">
+        <h2>{{title}}</h2>
+        <div>
+          <span>商品价格:￥{{price}}</span>
+        </div>
+      </div>
+      <button @click="collection">收藏</button>
+    </template>
+
+    <template id="nav">
+      <div class="nav">
+        <h2>{{title}}</h2>
+      </div>
+      <product-item></product-item>
+    </template>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const ProductItem = {
+        template: '#product',
+        data() {
+          return {
+            title: 'This is Product',
+            price: 9.9,
+          }
+        },
+      }
+      const app = Vue.createApp({
+        components: {
+          ProductItem,
+          NavBar: {
+            template: '#nav',
+            components: {
+              ProductItem,
+            },
+            data() {
+              return {
+                title: 'This is NavBar',
+              }
+            },
+          },
+        },
+        data() {
+          return {
+            message: 'Hello World',
+          }
+        },
+        methods: {},
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>
