@@ -19,6 +19,10 @@
         border: 1px solid #aaa;
         padding: 8px 16px;
       }
+      .active{
+        color: red;
+        background-color: #c9bebe;
+      }
     </style>
   </head>
   <body>
@@ -36,7 +40,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr v-for="(item,index) in books" :key="item.id">
+            <tr v-for="(item,index) in books" :key="item.id" :class="{active:index===currentIndex}" @click="currentClick(index)">
               <td>{{index+1}}</td>
               <td>{{item.name}}</td>
               <td>{{item.date}}</td>
@@ -67,6 +71,7 @@
         data() {
           return {
             books,
+            currentIndex:-1
           }
         },
         computed: {
@@ -95,6 +100,9 @@
           removeBook(index, item) {
             this.books.splice(index, 1)
           },
+          currentClick(index){
+            this.currentIndex=index
+          }
         },
       })
       app.mount('#app')

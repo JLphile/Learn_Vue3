@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="cn-ZH">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .active {
+        background-color:#f5f5f5;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="(item,index) in fruits" @click="liClick(index)" :class="{active:index===currentIndex}">{{item}}</li>
+      </ul>
+    </div>
+
+    <script src="../lib/vue.js"></script>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            fruits: ['banana', 'apple', 'peach', 'orange'],
+            currentIndex: -1,
+          }
+        },
+        methods: {
+          liClick(index) {
+            console.log(index)
+            this.currentIndex = index
+          },
+        },
+      })
+      app.mount('#app')
+    </script>
+  </body>
+</html>
